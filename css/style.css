@@ -57,6 +57,15 @@ h1 {
     background-color: lightskyblue;
 }
 
+.square.bomb.red {
+    background-color: red;
+}
+
 /* footer */
+
+footer {
+    padding: 20px 0;
+    text-align: center;
+}
 
 
