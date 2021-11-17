@@ -18,23 +18,29 @@ submit.addEventListener('click', function(){
     }
 
     let tentativi = 0;
+    let sentinella = false;
     
     for (let i = 0; i < squares.length; i++){
+
         squares[i].addEventListener('click', function(){
-            if (this.classList.contains('bomb')){
-                alert('Hai perso')
-                const punteggio = document.querySelector('.punteggio');
-                punteggio.innerHTML = 'Complimenti! il tuo punteggio è: ' + tentativi;
-                const bombs = document.getElementsByClassName('bomb');
-                for (let j = 0; j < bombs.length; j++){
-                    bombs[j].classList.add('red');
+            if (sentinella == false){
+                if (this.classList.contains('bomb')){
+                    alert('Hai perso');
+                    const punteggio = document.querySelector('.punteggio');
+                    punteggio.innerHTML = 'Complimenti! il tuo punteggio è: ' + tentativi;
+                    const bombs = document.getElementsByClassName('bomb');
+                    for (let j = 0; j < bombs.length; j++){
+                        bombs[j].classList.add('red');
+                    }
+                    submit.innerHTML = 'Riprova';
+                    sentinella = true;
+                    console.log(sentinella);
+                } else if (this.classList.contains('blue')){
+                    alert('ATTENZIONE! seleziona una casella diversa')
+                } else {
+                    this.classList.add('blue');
+                    tentativi++;
                 }
-                submit.innerHTML = 'Riprova';
-            } else if (this.classList.contains('blue')){
-                alert('ATTENZIONE! seleziona una casella diversa')
-            } else {
-                this.classList.add('blue');
-                tentativi++
             }
         })
     }
