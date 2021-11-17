@@ -7,12 +7,12 @@ submit.addEventListener('click', function(){
     console.log(select.value);
 
     container.innerHTML = '';
-    x = addSquare(select.value,container);
+    addSquare(select.value,container);
 
     const squares = document.getElementsByClassName('square');
 
     for (let i = 0; i < 16; i++){
-        let y = Math.floor(Math.random() * x) + 1;
+        let y = Math.floor(Math.random() * squares.length) + 1;
         console.log(y);
         squares[y - 1].classList.add('bomb');
     }
@@ -30,6 +30,8 @@ submit.addEventListener('click', function(){
                     bombs[j].classList.add('red');
                 }
                 submit.innerHTML = 'Riprova';
+            } else if (this.classList.contains('blue')){
+                alert('ATTENZIONE! seleziona una casella diversa')
             } else {
                 this.classList.add('blue');
                 tentativi++
@@ -38,12 +40,6 @@ submit.addEventListener('click', function(){
     }
 
 })
-
-
-
-
-
-
 
 function addSquare(type,where){
     let x;
@@ -75,6 +71,4 @@ function addSquare(type,where){
                 where.append(square);
             }
     }
-
-    return x;
 }
