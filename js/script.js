@@ -13,7 +13,11 @@ submit.addEventListener('click', function(){
 
     for (let i = 0; i < 16; i++){
         let y = Math.floor(Math.random() * squares.length) + 1;
-        console.log(y);
+        console.log(i , y);
+        while (squares[y - 1].classList.contains('bomb')){
+            y += 1;
+            console.log('già bomba');
+        }
         squares[y - 1].classList.add('bomb');
     }
 
@@ -42,39 +46,27 @@ submit.addEventListener('click', function(){
                     tentativi++;
                 }
             }
-        })
+        });
     }
 
-})
+});
 
 function addSquare(type,where){
     let x;
     switch (type){
         case 'easy': 
             x = 100;
-            for (let i = 0; i < x; i++){
-                let square = document.createElement('div');
-                square.innerText = i + 1;
-                square.className = 'square';
-                where.append(square);
-            }
             break;
         case 'hard':
             x = 81;
-            for (let i = 0; i < x; i++){
-                let square = document.createElement('div');
-                square.innerText = i + 1;
-                square.className = 'square hard';
-                where.append(square);
-            }
             break;
         case 'crazy':
             x = 49;
-            for (let i = 0; i < x; i++){
-                let square = document.createElement('div');
-                square.innerText = i + 1;
-                square.className = 'square crazy';
-                where.append(square);
-            }
+    }
+    for (let i = 0; i < x; i++){
+        let square = document.createElement('div');
+        square.innerText = i + 1;
+        square.className = `square ${type}`;
+        where.append(square);
     }
 }

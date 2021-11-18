@@ -34,13 +34,16 @@ h1 {
 }
 
 .square {
-    width: calc(100% / 10);
-    height: calc(100% / 10);
     background-color: lightgray;
     border: 2px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.square.easy {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
 }
 
 .square.hard {
